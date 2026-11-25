@@ -10,8 +10,8 @@
 <style>
 /* ═══════════════════════ RESET & BASE ═══════════════════════ */
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
-html{scroll-behavior:smooth;overflow-x:hidden;-webkit-text-size-adjust:100%}
-body{font-family:'Montserrat',sans-serif;background:#fdf6f0;color:#3a2a2a;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+html{scroll-behavior:smooth;overflow-x:clip;width:100%;max-width:100%;-webkit-text-size-adjust:100%}
+body{font-family:'Montserrat',sans-serif;background:#fdf6f0;color:#3a2a2a;overflow-x:clip;width:100%;max-width:100%;-webkit-font-smoothing:antialiased}
 img{max-width:100%;display:block}
 a{text-decoration:none;color:inherit}
 button{cursor:pointer;border:none;outline:none;font-family:inherit}
@@ -85,7 +85,7 @@ button{cursor:pointer;border:none;outline:none;font-family:inherit}
   display:flex;align-items:center;justify-content:center;
 }
 .book-3d{
-  width:280px;height:380px;position:relative;
+  width:280px;height:410px;position:relative;
   transform-style:preserve-3d;
   cursor:pointer;
   transition:transform 0.4s ease;
@@ -102,7 +102,7 @@ button{cursor:pointer;border:none;outline:none;font-family:inherit}
     inset 0 0 60px rgba(0,0,0,0.2),
     0 0 40px rgba(110,31,47,0.2);
   display:flex;flex-direction:column;align-items:center;justify-content:center;
-  padding:30px;
+  padding:32px 26px 30px;
   transform-origin:left center;
   transition:transform 1.2s cubic-bezier(0.645,0.045,0.355,1);
   backface-visibility:hidden;
@@ -132,36 +132,38 @@ button{cursor:pointer;border:none;outline:none;font-family:inherit}
 
 /* Ganesh symbol */
 .ganesh-symbol{
-  font-size:3rem;color:var(--gold);margin-bottom:20px;
+  font-size:3rem;color:var(--gold);margin-bottom:4px;
   text-shadow:0 0 20px rgba(201,168,76,0.5);
   filter:drop-shadow(0 2px 4px rgba(0,0,0,0.3));
+  position:relative;z-index:2;
 }
 
 .book-title{
-  font-family:'Great Vibes',cursive;font-size:1.3rem;
+  font-family:'Great Vibes',cursive;font-size:1.2rem;
   color:var(--gold-light);text-align:center;
-  letter-spacing:1px;margin-bottom:6px;
+  letter-spacing:1px;margin-bottom:2px;
   text-shadow:0 1px 3px rgba(0,0,0,0.3);
 }
 .book-names{
-  font-family:'Playfair Display',serif;font-size:1.6rem;
+  font-family:'Playfair Display',serif;font-size:1.4rem;
   color:var(--gold);text-align:center;font-weight:700;
-  letter-spacing:2px;
+  letter-spacing:2px;line-height:1.18;
   text-shadow:0 2px 4px rgba(0,0,0,0.3);
-  margin-bottom:20px;
+  margin-bottom:4px;
 }
+.book-cover .golden-divider.short{margin:7px auto}
 
 .tap-hint{
-  font-family:'Montserrat',sans-serif;font-size:0.7rem;
-  color:rgba(232,212,139,0.7);letter-spacing:3px;
+  font-family:'Montserrat',sans-serif;font-size:0.62rem;
+  color:rgba(232,212,139,0.75);letter-spacing:2.5px;
   text-transform:uppercase;
   animation:tapPulse 2s ease-in-out infinite;
-  margin-top:10px;
+  margin-top:4px;
 }
 @keyframes tapPulse{0%,100%{opacity:0.5}50%{opacity:1}}
 
 .tap-icon{
-  margin-top:20px;font-size:1.5rem;
+  margin-top:4px;font-size:1.15rem;
   animation:tapBounce 1.5s ease-in-out infinite;
   position:relative;z-index:2;
 }
@@ -191,12 +193,14 @@ button{cursor:pointer;border:none;outline:none;font-family:inherit}
 .invitation-body{
   display:none;opacity:0;
   transition:opacity 1s ease;
+  width:100%;max-width:100%;overflow-x:clip;
 }
 .invitation-body.visible{display:block;opacity:1}
 
 /* Section base */
 .section{
-  min-height:100vh;padding:60px 20px;
+  min-height:auto;padding:28px 18px;
+  width:100%;max-width:100%;
   display:flex;flex-direction:column;align-items:center;justify-content:center;
   position:relative;overflow:hidden;
 }
@@ -205,7 +209,7 @@ button{cursor:pointer;border:none;outline:none;font-family:inherit}
 .golden-divider{
   width:200px;height:2px;
   background:linear-gradient(90deg,transparent,var(--gold),transparent);
-  margin:15px auto;
+  margin:10px auto;
 }
 .golden-divider.short{width:120px}
 
@@ -219,27 +223,27 @@ button{cursor:pointer;border:none;outline:none;font-family:inherit}
 
 /* Ornamental corner */
 .corner-ornament{
-  position:absolute;width:50px;height:50px;opacity:0.2;
+  position:absolute;width:44px;height:44px;opacity:0.22;
   z-index:0;
 }
 .corner-ornament::before,.corner-ornament::after{
   content:'';position:absolute;background:var(--gold);
 }
-.corner-ornament::before{width:30px;height:1px;top:0;left:0}
-.corner-ornament::after{width:1px;height:30px;top:0;left:0}
-.corner-ornament.top-right{top:15px;right:60px;transform:rotate(90deg)}
-.corner-ornament.bottom-left{bottom:15px;left:15px;transform:rotate(270deg)}
-.corner-ornament.bottom-right{bottom:15px;right:15px;transform:rotate(180deg)}
-.corner-ornament.top-left{top:15px;left:15px}
+.corner-ornament::before{width:26px;height:1px;top:0;left:0}
+.corner-ornament::after{width:1px;height:26px;top:0;left:0}
+.corner-ornament.top-right{top:12px;right:58px;transform:rotate(90deg)}
+.corner-ornament.bottom-left{bottom:12px;left:12px;transform:rotate(270deg)}
+.corner-ornament.bottom-right{bottom:12px;right:12px;transform:rotate(180deg)}
+.corner-ornament.top-left{top:12px;left:12px}
 
 /* ═══════════════════════ PAGE 2: WEDDING INVITATION ═══════════════════════ */
 .section-invitation{
-  background:linear-gradient(180deg,var(--ivory) 0%,var(--blush) 50%,var(--champagne) 100%);
-  position:relative;padding:40px 20px;
+  background:var(--champagne);
+  position:relative;padding:28px 18px 68px;
 }
 
 .islamic-symbol{
-  font-size:2.5rem;color:var(--gold);margin-bottom:10px;
+  font-size:2.5rem;color:var(--gold);margin-bottom:6px;
   text-shadow:0 0 15px rgba(201,168,76,0.4);
   animation:gentlePulse 3s ease-in-out infinite;
 }
@@ -248,7 +252,7 @@ button{cursor:pointer;border:none;outline:none;font-family:inherit}
 .invitation-header{
   font-family:'Montserrat',sans-serif;font-size:0.65rem;
   letter-spacing:4px;text-transform:uppercase;
-  color:var(--text-medium);margin:10px 0;
+  color:var(--text-dark);font-weight:600;margin:6px 0;
 }
 
 .hero-bg{
@@ -256,39 +260,44 @@ button{cursor:pointer;border:none;outline:none;font-family:inherit}
   overflow:hidden;z-index:0;
 }
 .hero-bg img{
-  width:100%;height:100%;object-fit:cover;
-  filter:blur(3px) brightness(0.3);
+  width:100%;height:100%;object-fit:cover;object-position:center top;
+  filter:blur(2.5px) brightness(0.92);
   animation:slowZoom 30s ease-in-out infinite alternate;
 }
 @keyframes slowZoom{0%{transform:scale(1)}100%{transform:scale(1.15)}}
 .hero-bg::after{
   content:'';position:absolute;top:0;left:0;width:100%;height:100%;
   background:linear-gradient(180deg,
-    rgba(254,252,247,0.92) 0%,
-    rgba(253,240,233,0.88) 40%,
-    rgba(245,230,200,0.9) 100%);
+    rgba(254,252,247,0.62) 0%,
+    rgba(253,240,233,0.54) 40%,
+    rgba(245,230,200,0.68) 68%,
+    rgba(245,230,200,0.92) 86%,
+    #f5e6c8 100%);
 }
 
-.invitation-content{position:relative;z-index:1;text-align:center;width:100%;max-width:400px}
+.invitation-content{
+  position:relative;z-index:1;text-align:center;width:100%;max-width:400px;
+  text-shadow:0 1px 10px rgba(254,252,247,0.95), 0 0 4px rgba(254,252,247,0.85);
+}
 
 .together-text{
   font-family:'Montserrat',sans-serif;font-size:0.6rem;
-  letter-spacing:5px;text-transform:uppercase;
-  color:var(--text-medium);margin:5px 0 15px;
+  letter-spacing:4px;text-transform:uppercase;
+  color:var(--text-dark);font-weight:600;margin:4px 0 10px;
 }
 
 .groom-name,.bride-name{
-  font-family:'Playfair Display',serif;font-size:2.4rem;
+  font-family:'Playfair Display',serif;font-size:2.05rem;
   color:var(--wine);font-weight:700;
-  letter-spacing:2px;line-height:1.2;
-  opacity:0;
+  letter-spacing:1.5px;line-height:1.2;
+  opacity:0;max-width:100%;overflow-wrap:break-word;
 }
 .groom-name.typed,.bride-name.typed{
-  animation:typeReveal 1.5s ease forwards;
+  animation:typeReveal 1.3s ease forwards;
 }
 @keyframes typeReveal{
-  0%{opacity:0;transform:translateY(20px);letter-spacing:8px}
-  100%{opacity:1;transform:translateY(0);letter-spacing:2px}
+  0%{opacity:0;transform:translateY(16px)}
+  100%{opacity:1;transform:translateY(0)}
 }
 
 .parent-info{
@@ -313,7 +322,8 @@ button{cursor:pointer;border:none;outline:none;font-family:inherit}
 /* ═══════════════════════ PAGE 3: SAVE THE DATE ═══════════════════════ */
 .section-savedate{
   background:linear-gradient(180deg,var(--champagne) 0%,var(--blush) 50%,var(--ivory) 100%);
-  min-height:100vh;
+  padding-top:12px;
+  padding-bottom:88px;
 }
 
 .scroll-container{
@@ -458,76 +468,42 @@ button{cursor:pointer;border:none;outline:none;font-family:inherit}
 /* ═══════════════════════ PAGE 4: WEDDING FUNCTIONS ═══════════════════════ */
 .section-functions{
   background:linear-gradient(180deg,var(--ivory) 0%,var(--blush) 100%);
-  padding:70px 0 40px;
+  padding:68px 0 24px;
 }
 
 .section-title{
-  font-family:'Playfair Display',serif;font-size:1.8rem;
+  font-family:'Playfair Display',serif;font-size:1.75rem;
   color:var(--wine);font-weight:700;text-align:center;
-  margin-bottom:5px;
+  margin-bottom:4px;
 }
 .section-subtitle{
   font-family:'Montserrat',sans-serif;font-size:0.6rem;
   color:var(--text-medium);letter-spacing:4px;text-transform:uppercase;
-  text-align:center;margin-bottom:30px;
+  text-align:center;margin-bottom:14px;
 }
 
 .carousel-container{
-  width:100%;max-width:400px;margin:0 auto;
+  width:100%;max-width:390px;margin:0 auto;
   position:relative;overflow:hidden;
-  padding:20px 0;
+  padding:10px 0 16px;
 }
 .carousel-track{
-  display:flex;transition:transform 0.5s cubic-bezier(0.25,0.46,0.45,0.94);
+  display:flex;transition:transform 0.55s cubic-bezier(0.25,0.46,0.45,0.94);
   touch-action:pan-y;
 }
-.carousel-card{
-  min-width:85%;margin:0 7.5%;
-  background:white;border-radius:20px;
-  padding:30px 25px;text-align:center;
-  box-shadow:0 10px 40px rgba(0,0,0,0.08);
-  border:1px solid rgba(201,168,76,0.2);
-  transition:transform 0.3s ease;
-  position:relative;overflow:hidden;
-}
 .carousel-card::before{
-  content:'';position:absolute;top:0;left:0;width:100%;height:4px;
+  content:'';position:absolute;top:0;left:0;width:100%;height:4px;z-index:4;
 }
-.carousel-card[data-color="white"]::before{background:linear-gradient(90deg,#f0ece4,#d4cfc7)}
+.carousel-card[data-color="white"]::before{background:linear-gradient(90deg,#e8dfd1,#c9a84c,#e8dfd1)}
 .carousel-card[data-color="yellow"]::before{background:linear-gradient(90deg,#f0c040,#e8b820,#f0c040)}
 .carousel-card[data-color="blue"]::before{background:linear-gradient(90deg,#2e5a88,#3a7bd5,#2e5a88)}
 .carousel-card[data-color="red"]::before{background:linear-gradient(90deg,#c0392b,#e74c3c,#c0392b)}
 .carousel-card[data-color="black"]::before{background:linear-gradient(90deg,#2c3e50,#34495e,#2c3e50)}
 .carousel-card[data-color="pink"]::before{background:linear-gradient(90deg,#e8a0b4,#f0c0d0,#e8a0b4)}
 
-.card-emoji{font-size:3rem;margin-bottom:12px}
-.card-function-name{
-  font-family:'Playfair Display',serif;font-size:1.4rem;
-  color:var(--wine);font-weight:700;margin-bottom:12px;
-}
-.card-detail{
-  font-family:'Montserrat',sans-serif;font-size:0.75rem;
-  color:var(--text-medium);margin:6px 0;
-  display:flex;align-items:center;justify-content:center;gap:6px;
-}
-.card-detail-icon{font-size:0.9rem}
-.card-dress{
-  display:inline-block;padding:5px 16px;
-  background:rgba(110,31,47,0.08);border-radius:20px;
-  font-family:'Montserrat',sans-serif;font-size:0.65rem;
-  color:var(--wine);letter-spacing:2px;text-transform:uppercase;
-  margin-top:10px;
-}
-.card-theme-dot{
-  width:14px;height:14px;border-radius:50%;
-  display:inline-block;margin-left:6px;vertical-align:middle;
-  border:2px solid rgba(110,31,47,0.25);
-  box-shadow:0 0 0 1px rgba(0,0,0,0.08);
-}
-
 /* Carousel navigation dots */
 .carousel-dots{
-  display:flex;justify-content:center;gap:8px;margin-top:20px;
+  display:flex;justify-content:center;gap:8px;margin-top:10px;
 }
 .carousel-dot{
   width:8px;height:8px;border-radius:50%;
@@ -540,7 +516,7 @@ button{cursor:pointer;border:none;outline:none;font-family:inherit}
 
 /* Swipe hint */
 .swipe-hint{
-  text-align:center;margin-top:12px;
+  text-align:center;margin-top:8px;
   font-family:'Montserrat',sans-serif;font-size:0.6rem;
   color:var(--text-medium);opacity:0.6;
   animation:swipeHint 2s ease-in-out infinite;
@@ -550,11 +526,11 @@ button{cursor:pointer;border:none;outline:none;font-family:inherit}
 /* ═══════════════════════ PAGE 5: OUR STORY ═══════════════════════ */
 .section-story{
   background:linear-gradient(180deg,var(--blush) 0%,var(--ivory) 100%);
-  padding:50px 0;
+  padding:28px 0;
 }
 
 .gallery-container{
-  width:100%;max-width:400px;margin:0 auto;
+  width:100%;max-width:390px;margin:0 auto;
   overflow:hidden;position:relative;
 }
 .gallery-track{
@@ -775,15 +751,23 @@ button{cursor:pointer;border:none;outline:none;font-family:inherit}
 @keyframes marigoldSway{0%,100%{transform:rotate(-3deg)}50%{transform:rotate(3deg)}}
 
 /* ═══════════════════════ RESPONSIVE ═══════════════════════ */
+#sectionInvitation .corner-ornament.bottom-left,
+#sectionInvitation .corner-ornament.bottom-right,
+#sectionSaveDate .corner-ornament.top-left,
+#sectionSaveDate .corner-ornament.top-right{display:none}
+
 @media(min-width:768px){
   .book-3d{width:340px;height:460px}
   .groom-name,.bride-name{font-size:3rem}
-  .section{padding:80px 40px}
-  .carousel-card{min-width:60%;margin:0 20%}
+  .section{padding:36px 32px}
+  .section-invitation{padding-bottom:76px}
+  .section-savedate{padding-top:16px;padding-bottom:92px}
   .gallery-slide{padding:0 60px}
 }
 @media(min-width:1024px){
-  .section{padding:100px 60px}
+  .section{padding:40px 40px}
+  .section-invitation{padding-bottom:84px}
+  .section-savedate{padding-top:18px;padding-bottom:92px}
   .invitation-content{max-width:500px}
 }
 
@@ -797,6 +781,118 @@ button{cursor:pointer;border:none;outline:none;font-family:inherit}
   z-index:9999;transition:transform 0.4s ease;
 }
 .toast.show{transform:translateX(-50%) translateY(0)}
+
+/* ═══════════════════════ ISLAMIC MOON IMAGE ═══════════════════════ */
+.islamic-moon-img{
+  width:100px;height:100px;object-fit:contain;
+  margin:0 auto 8px;
+  filter:drop-shadow(0 0 15px rgba(201,168,76,0.45));
+  animation:gentlePulse 3s ease-in-out infinite;
+}
+.islamic-moon-img.large{width:80px;height:80px}
+
+/* ═══════════════════════ ISLAMIC FUNCTION CARDS ═══════════════════════ */
+.carousel-card{
+  flex:0 0 calc(100% - 36px);width:calc(100% - 36px);margin:0 18px;
+  background:#ffffff;
+  border-radius:22px;
+  padding:0 0 22px;text-align:center;
+  box-shadow:0 8px 18px rgba(110,31,47,0.10);
+  border:1px solid rgba(201,168,76,0.3);
+  transition:transform 0.3s ease;
+  position:relative;overflow:hidden;
+  color:var(--text-dark);
+}
+.card-scene{
+  position:relative;height:155px;width:100%;overflow:hidden;
+}
+.card-scene svg{
+  width:100%;height:100%;display:block;
+  filter:blur(1.2px);transform:scale(1.04);
+}
+.card-scene::after{
+  content:'';position:absolute;left:0;right:0;bottom:0;height:65px;
+  background:linear-gradient(180deg,rgba(255,255,255,0) 0%,rgba(255,255,255,0.88) 72%,#ffffff 100%);
+}
+.card-icon-badge{
+  width:58px;height:58px;border-radius:50%;
+  background:#ffffff;
+  border:2px solid rgba(201,168,76,0.45);
+  box-shadow:0 6px 18px rgba(110,31,47,0.15);
+  display:flex;align-items:center;justify-content:center;
+  font-size:1.55rem;
+  margin:-30px auto 10px;
+  position:relative;z-index:3;
+}
+.card-body{padding:0 18px;position:relative;z-index:2}
+.card-datetime{
+  font-family:'Montserrat',sans-serif;font-size:0.62rem;font-weight:600;
+  color:#9c7a3c;letter-spacing:1.6px;text-transform:uppercase;
+  margin-bottom:5px;
+}
+.card-function-name{
+  font-family:'Playfair Display',serif;font-size:1.55rem;
+  color:var(--wine);font-weight:700;margin-bottom:4px;line-height:1.15;
+}
+.card-venue{
+  font-family:'Montserrat',sans-serif;font-size:0.75rem;
+  color:var(--text-medium);margin-bottom:14px;
+}
+.card-dress-box{
+  display:flex;align-items:center;gap:12px;
+  padding:9px 14px;margin:0 auto;max-width:255px;
+  background:#fdfaf5;
+  border:1px solid rgba(201,168,76,0.32);
+  border-radius:14px;text-align:left;
+  box-shadow:0 2px 10px rgba(0,0,0,0.03);
+}
+.card-swatch{
+  width:28px;height:28px;border-radius:8px;flex-shrink:0;
+  border:1.5px solid rgba(110,31,47,0.2);
+  box-shadow:inset 0 1px 2px rgba(255,255,255,0.5);
+}
+.card-dress-text{display:flex;flex-direction:column;line-height:1.25}
+.card-dress-label{
+  font-family:'Montserrat',sans-serif;font-size:0.55rem;font-weight:600;
+  letter-spacing:1.8px;text-transform:uppercase;color:#9c7a3c;
+}
+.card-dress-value{
+  font-family:'Montserrat',sans-serif;font-size:0.74rem;font-weight:600;
+  color:var(--text-dark);
+}
+
+/* ═══════════════════════ FOOTER / CREATED BY ═══════════════════════ */
+.footer-credit{
+  background:linear-gradient(180deg,var(--ivory),#f3eadb);
+  text-align:center;padding:20px 18px 26px;
+  border-top:1px solid rgba(201,168,76,0.28);
+}
+.footer-brand{
+  font-family:'Playfair Display',serif;font-size:1rem;
+  color:var(--wine);font-weight:700;letter-spacing:1px;
+}
+.footer-contact{
+  margin-top:10px;
+}
+.footer-contact a{
+  display:inline-flex;align-items:center;gap:8px;
+  color:#1d6b3a;font-family:'Montserrat',sans-serif;
+  font-size:0.82rem;font-weight:600;
+  padding:9px 22px;border-radius:30px;
+  background:rgba(37,211,102,0.14);
+  border:1.5px solid rgba(37,211,102,0.45);
+  box-shadow:0 3px 12px rgba(37,211,102,0.12);
+  transition:all 0.3s ease;
+}
+.footer-contact a:hover{
+  background:rgba(37,211,102,0.24);
+  transform:translateY(-2px);
+}
+.footer-contact-msg{
+  font-family:'Montserrat',sans-serif;font-size:0.7rem;
+  color:var(--text-medium);margin-top:10px;line-height:1.5;
+  max-width:300px;margin-left:auto;margin-right:auto;
+}
 
 /* ═══════════════════════ CONFETTI ═══════════════════════ */
 .confetti-container{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:9997}
@@ -857,7 +953,7 @@ button{cursor:pointer;border:none;outline:none;font-family:inherit}
         </div>
       </div>
       <div class="book-cover" id="bookCover">
-        <div class="ganesh-symbol">☪</div>
+        <div class="ganesh-symbol"><img src="photos/islamic-moon.png" alt="Islamic Symbol" style="width:64px;height:64px;object-fit:contain;filter:drop-shadow(0 0 12px rgba(201,168,76,0.55))"></div>
         <div class="book-title">You are cordially invited</div>
         <div class="golden-divider short"></div>
         <div class="book-names">Mehedi<br>&<br>Halima</div>
@@ -884,7 +980,7 @@ button{cursor:pointer;border:none;outline:none;font-family:inherit}
     <div class="corner-ornament bottom-right"></div>
 
     <div class="invitation-content">
-      <div class="islamic-symbol reveal">☪</div>
+      <div class="islamic-symbol reveal"><img class="islamic-moon-img large" src="photos/islamic-moon.png" alt="Islamic Symbol"></div>
       <div class="invitation-header reveal reveal-delay-1">In the name of the Almighty</div>
       <div class="golden-divider reveal reveal-delay-1"></div>
       <div class="together-text reveal reveal-delay-2">Together with their families</div>
@@ -911,8 +1007,8 @@ button{cursor:pointer;border:none;outline:none;font-family:inherit}
     <div class="corner-ornament bottom-left"></div>
     <div class="corner-ornament bottom-right"></div>
 
-    <div class="islamic-symbol reveal" style="font-size:2rem">☪</div>
-    <h2 class="section-title reveal" style="margin-bottom:25px">Save the Date</h2>
+    <div class="islamic-symbol reveal" style="font-size:2rem"><img class="islamic-moon-img" src="photos/islamic-moon.png" alt="Islamic Symbol" style="width:80px;height:80px"></div>
+    <h2 class="section-title reveal" style="margin-bottom:16px">Save the Date</h2>
 
     <div class="scroll-container reveal reveal-delay-1">
       <div class="scroll-wrapper" id="scrollWrapper">
@@ -923,7 +1019,7 @@ button{cursor:pointer;border:none;outline:none;font-family:inherit}
         </div>
 
         <div class="scroll-content">
-          <div class="islamic-symbol" style="font-size:1.5rem;margin-bottom:5px">☪</div>
+          <img src="photos/bismillah.png" alt="Bismillah Calligraphy" style="width:175px;max-width:85%;height:auto;margin:0 auto 8px;display:block;filter:drop-shadow(0 1px 4px rgba(201,168,76,0.35))">
           <div class="save-date-title">The Wedding Day</div>
           <div class="golden-divider short"></div>
 
@@ -979,13 +1075,13 @@ button{cursor:pointer;border:none;outline:none;font-family:inherit}
   <!-- ═══════════════════════ PAGE 4: WEDDING FUNCTIONS ═══════════════════════ -->
   <section class="section section-functions" id="sectionFunctions">
     <!-- Marigold strings -->
-    <div class="marigold-string">
-      <div class="marigold"><div class="marigold-thread" style="height:30px"></div><div class="marigold-flower" style="animation-delay:0s">🌼</div></div>
-      <div class="marigold"><div class="marigold-thread" style="height:50px"></div><div class="marigold-flower" style="animation-delay:0.5s">🌼</div></div>
-      <div class="marigold"><div class="marigold-thread" style="height:20px"></div><div class="marigold-flower" style="animation-delay:1s">🌼</div></div>
-      <div class="marigold"><div class="marigold-thread" style="height:45px"></div><div class="marigold-flower" style="animation-delay:1.5s">🌼</div></div>
-      <div class="marigold"><div class="marigold-thread" style="height:35px"></div><div class="marigold-flower" style="animation-delay:2s">🌼</div></div>
-      <div class="marigold"><div class="marigold-thread" style="height:25px"></div><div class="marigold-flower" style="animation-delay:0.3s">🌼</div></div>
+    <div class="marigold-string" style="top:0">
+      <div class="marigold"><div class="marigold-thread" style="height:10px"></div><div class="marigold-flower" style="animation-delay:0s">🌼</div></div>
+      <div class="marigold"><div class="marigold-thread" style="height:16px"></div><div class="marigold-flower" style="animation-delay:0.5s">🌼</div></div>
+      <div class="marigold"><div class="marigold-thread" style="height:8px"></div><div class="marigold-flower" style="animation-delay:1s">🌼</div></div>
+      <div class="marigold"><div class="marigold-thread" style="height:15px"></div><div class="marigold-flower" style="animation-delay:1.5s">🌼</div></div>
+      <div class="marigold"><div class="marigold-thread" style="height:12px"></div><div class="marigold-flower" style="animation-delay:2s">🌼</div></div>
+      <div class="marigold"><div class="marigold-thread" style="height:9px"></div><div class="marigold-flower" style="animation-delay:0.3s">🌼</div></div>
     </div>
 
     <h2 class="section-title reveal">Wedding Celebrations</h2>
@@ -993,75 +1089,232 @@ button{cursor:pointer;border:none;outline:none;font-family:inherit}
 
     <div class="carousel-container">
       <div class="carousel-track" id="carouselTrack">
-        <!-- Card 1: Mata Pujan -->
-        <div class="carousel-card" data-color="white">
-          <div class="card-emoji">🪔</div>
-          <div class="card-function-name">Mata Pujan</div>
-          <div class="golden-divider short"></div>
-          <div class="card-detail"><span class="card-detail-icon">📅</span> Monday, 1st February 2027</div>
-          <div class="card-detail"><span class="card-detail-icon">🕐</span> 11:00 AM</div>
-          <div class="card-detail"><span class="card-detail-icon">📍</span> Kolkata</div>
-          <div class="card-dress">Formal · <span class="card-theme-dot" style="background:#f5f5f0"></span></div>
-        </div>
-        <!-- Card 2: Haldi -->
+        <!-- Card 1: Haldi (Islamic Courtyard Marigold & Lanterns) -->
         <div class="carousel-card" data-color="yellow">
-          <div class="card-emoji">🌻🌼✨</div>
-          <div class="card-function-name">Haldi</div>
-          <div class="golden-divider short"></div>
-          <div class="card-detail"><span class="card-detail-icon">📅</span> Tuesday, 2nd February 2027</div>
-          <div class="card-detail"><span class="card-detail-icon">🕐</span> 11:00 AM</div>
-          <div class="card-detail"><span class="card-detail-icon">📍</span> Kolkata</div>
-          <div class="card-dress">Formal · <span class="card-theme-dot" style="background:#f0c040"></span></div>
+          <div class="card-scene">
+            <svg viewBox="0 0 340 160" preserveAspectRatio="xMidYMid slice">
+              <defs>
+                <linearGradient id="gHaldi" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stop-color="#ffd54f"/>
+                  <stop offset="65%" stop-color="#ffe57f"/>
+                  <stop offset="100%" stop-color="#fff8e1"/>
+                </linearGradient>
+              </defs>
+              <rect width="340" height="160" fill="url(#gHaldi)"/>
+              <path d="M0 160 L0 45 Q85 10 170 45 Q255 10 340 45 L340 160 Z" fill="#f9a825" opacity="0.25"/>
+              <path d="M90 160 L90 78 Q170 25 250 78 L250 160 Z" fill="#fffde7" opacity="0.55"/>
+              <line x1="65" y1="0" x2="65" y2="55" stroke="#c9a84c" stroke-width="2"/>
+              <circle cx="65" cy="58" r="10" fill="#ffb300"/>
+              <circle cx="65" cy="78" r="9" fill="#ffca28"/>
+              <line x1="275" y1="0" x2="275" y2="55" stroke="#c9a84c" stroke-width="2"/>
+              <circle cx="275" cy="58" r="10" fill="#ffb300"/>
+              <circle cx="275" cy="78" r="9" fill="#ffca28"/>
+              <path d="M162 20 L178 20 L182 44 L158 44 Z" fill="#f57f17" opacity="0.7"/>
+              <circle cx="170" cy="44" r="5" fill="#fff59d"/>
+              <circle cx="120" cy="115" r="14" fill="#ffb300" opacity="0.55"/>
+              <circle cx="220" cy="115" r="14" fill="#ffb300" opacity="0.55"/>
+            </svg>
+          </div>
+          <div class="card-icon-badge">🌼</div>
+          <div class="card-body">
+            <div class="card-datetime">TUE · 02 FEB · 11:00 AM</div>
+            <div class="card-function-name">Haldi</div>
+            <div class="card-venue">Kolkata</div>
+            <div class="card-dress-box">
+              <div class="card-swatch" style="background:linear-gradient(135deg,#ffd54f,#f9a825)"></div>
+              <div class="card-dress-text">
+                <span class="card-dress-label">Dress Code</span>
+                <span class="card-dress-value">Formal · Yellow</span>
+              </div>
+            </div>
+          </div>
         </div>
-        <!-- Card 3: Mehendi -->
+
+        <!-- Card 2: Mehendi (Islamic Arch & Henna Motif in Blue) -->
         <div class="carousel-card" data-color="blue">
-          <div class="card-emoji">🤲💚✋</div>
-          <div class="card-function-name">Mehendi</div>
-          <div class="golden-divider short"></div>
-          <div class="card-detail"><span class="card-detail-icon">📅</span> Wednesday, 3rd February 2027</div>
-          <div class="card-detail"><span class="card-detail-icon">🕐</span> 11:00 AM</div>
-          <div class="card-detail"><span class="card-detail-icon">📍</span> Kolkata</div>
-          <div class="card-dress">Formal · <span class="card-theme-dot" style="background:#3a7bd5"></span></div>
+          <div class="card-scene">
+            <svg viewBox="0 0 340 160" preserveAspectRatio="xMidYMid slice">
+              <defs>
+                <linearGradient id="gMehendi" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stop-color="#2e5a88"/>
+                  <stop offset="65%" stop-color="#64b5f6"/>
+                  <stop offset="100%" stop-color="#e3f2fd"/>
+                </linearGradient>
+              </defs>
+              <rect width="340" height="160" fill="url(#gMehendi)"/>
+              <path d="M70 160 L70 68 Q170 8 270 68 L270 160 Z" fill="#e3f2fd" opacity="0.35"/>
+              <path d="M105 160 L105 82 Q170 32 235 82 L235 160 Z" fill="#ffffff" opacity="0.35"/>
+              <path d="M125 130 C120 95,135 72,145 72 C152 72,155 92,152 120 Z" fill="#8d5524" opacity="0.45"/>
+              <path d="M215 130 C220 95,205 72,195 72 C188 72,185 92,188 120 Z" fill="#8d5524" opacity="0.45"/>
+              <circle cx="140" cy="100" r="8" fill="none" stroke="#ffd54f" stroke-width="1.5" opacity="0.7"/>
+              <circle cx="200" cy="100" r="8" fill="none" stroke="#ffd54f" stroke-width="1.5" opacity="0.7"/>
+              <line x1="50" y1="0" x2="50" y2="42" stroke="#ffd54f" stroke-width="1.5"/>
+              <polygon points="44,42 56,42 52,58 48,58" fill="#ffd54f" opacity="0.8"/>
+              <line x1="290" y1="0" x2="290" y2="42" stroke="#ffd54f" stroke-width="1.5"/>
+              <polygon points="284,42 296,42 292,58 288,58" fill="#ffd54f" opacity="0.8"/>
+            </svg>
+          </div>
+          <div class="card-icon-badge">🤲</div>
+          <div class="card-body">
+            <div class="card-datetime">WED · 03 FEB · 11:00 AM</div>
+            <div class="card-function-name">Mehendi</div>
+            <div class="card-venue">Kolkata</div>
+            <div class="card-dress-box">
+              <div class="card-swatch" style="background:linear-gradient(135deg,#42a5f5,#1e5fa8)"></div>
+              <div class="card-dress-text">
+                <span class="card-dress-label">Dress Code</span>
+                <span class="card-dress-value">Formal · Blue</span>
+              </div>
+            </div>
+          </div>
         </div>
-        <!-- Card 4: Sangeet -->
+
+        <!-- Card 3: Sangeet (Royal Crimson Islamic Mahal & Lanterns) -->
         <div class="carousel-card" data-color="red">
-          <div class="card-emoji">💃🎶🕺</div>
-          <div class="card-function-name">Sangeet</div>
-          <div class="golden-divider short"></div>
-          <div class="card-detail"><span class="card-detail-icon">📅</span> Thursday, 4th February 2027</div>
-          <div class="card-detail"><span class="card-detail-icon">🕐</span> 11:00 AM</div>
-          <div class="card-detail"><span class="card-detail-icon">📍</span> Kolkata</div>
-          <div class="card-dress">Formal · <span class="card-theme-dot" style="background:#e74c3c"></span></div>
+          <div class="card-scene">
+            <svg viewBox="0 0 340 160" preserveAspectRatio="xMidYMid slice">
+              <defs>
+                <linearGradient id="gSangeet" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stop-color="#7f1d2b"/>
+                  <stop offset="60%" stop-color="#c0392b"/>
+                  <stop offset="100%" stop-color="#fde8e8"/>
+                </linearGradient>
+              </defs>
+              <rect width="340" height="160" fill="url(#gSangeet)"/>
+              <path d="M50 160 L50 72 Q110 35 170 72 Q230 35 290 72 L290 160 Z" fill="#ffd54f" opacity="0.16"/>
+              <line x1="80" y1="0" x2="80" y2="48" stroke="#ffd54f" stroke-width="1.5"/>
+              <circle cx="80" cy="54" r="8" fill="#ffecb3" opacity="0.85"/>
+              <line x1="170" y1="0" x2="170" y2="34" stroke="#ffd54f" stroke-width="1.5"/>
+              <circle cx="170" cy="40" r="9" fill="#ffecb3" opacity="0.9"/>
+              <line x1="260" y1="0" x2="260" y2="48" stroke="#ffd54f" stroke-width="1.5"/>
+              <circle cx="260" cy="54" r="8" fill="#ffecb3" opacity="0.85"/>
+              <ellipse cx="170" cy="112" rx="34" ry="18" fill="#8d4e2a" opacity="0.6"/>
+              <circle cx="105" cy="95" r="10" fill="#ff8a80" opacity="0.5"/>
+              <circle cx="235" cy="95" r="10" fill="#ff8a80" opacity="0.5"/>
+            </svg>
+          </div>
+          <div class="card-icon-badge">🎶</div>
+          <div class="card-body">
+            <div class="card-datetime">THU · 04 FEB · 11:00 AM</div>
+            <div class="card-function-name">Sangeet</div>
+            <div class="card-venue">Kolkata</div>
+            <div class="card-dress-box">
+              <div class="card-swatch" style="background:linear-gradient(135deg,#e53935,#991b1b)"></div>
+              <div class="card-dress-text">
+                <span class="card-dress-label">Dress Code</span>
+                <span class="card-dress-value">Formal · Red</span>
+              </div>
+            </div>
+          </div>
         </div>
-        <!-- Card 5: Baraat -->
+
+        <!-- Card 4: Baraat (Midnight Royal Islamic Gate & Procession) -->
         <div class="carousel-card" data-color="black">
-          <div class="card-emoji">🐴🎉🥁</div>
-          <div class="card-function-name">Baraat</div>
-          <div class="golden-divider short"></div>
-          <div class="card-detail"><span class="card-detail-icon">📅</span> Friday, 5th February 2027</div>
-          <div class="card-detail"><span class="card-detail-icon">🕐</span> 11:00 AM</div>
-          <div class="card-detail"><span class="card-detail-icon">📍</span> Kolkata</div>
-          <div class="card-dress">Formal · <span class="card-theme-dot" style="background:#2c3e50"></span></div>
+          <div class="card-scene">
+            <svg viewBox="0 0 340 160" preserveAspectRatio="xMidYMid slice">
+              <defs>
+                <linearGradient id="gBaraat" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stop-color="#141824"/>
+                  <stop offset="65%" stop-color="#2c3548"/>
+                  <stop offset="100%" stop-color="#e8eaf0"/>
+                </linearGradient>
+              </defs>
+              <rect width="340" height="160" fill="url(#gBaraat)"/>
+              <path d="M85 160 L85 75 Q170 12 255 75 L255 160 Z" fill="#c9a84c" opacity="0.24"/>
+              <circle cx="70" cy="30" r="2" fill="#ffd54f"/>
+              <circle cx="120" cy="22" r="2.5" fill="#ffd54f"/>
+              <circle cx="230" cy="28" r="2" fill="#ffd54f"/>
+              <circle cx="285" cy="38" r="2.5" fill="#ffd54f"/>
+              <path d="M148 36 A16 16 0 1 0 172 52 A12 12 0 1 1 148 36 Z" fill="#ffd54f" opacity="0.85"/>
+              <rect x="45" y="70" width="14" height="24" rx="4" fill="#ffb300" opacity="0.65"/>
+              <rect x="281" y="70" width="14" height="24" rx="4" fill="#ffb300" opacity="0.65"/>
+            </svg>
+          </div>
+          <div class="card-icon-badge">🥁</div>
+          <div class="card-body">
+            <div class="card-datetime">FRI · 05 FEB · 11:00 AM</div>
+            <div class="card-function-name">Baraat</div>
+            <div class="card-venue">Kolkata</div>
+            <div class="card-dress-box">
+              <div class="card-swatch" style="background:linear-gradient(135deg,#374151,#111827)"></div>
+              <div class="card-dress-text">
+                <span class="card-dress-label">Dress Code</span>
+                <span class="card-dress-value">Formal · Black</span>
+              </div>
+            </div>
+          </div>
         </div>
-        <!-- Card 6: Wedding & Pheras -->
+
+        <!-- Card 5: Wedding & Pheras (Blush Pink Islamic Nikah Dome & Floral Pavilion) -->
         <div class="carousel-card" data-color="pink">
-          <div class="card-emoji">🕌💍🤝</div>
-          <div class="card-function-name">Wedding & Pheras</div>
-          <div class="golden-divider short"></div>
-          <div class="card-detail"><span class="card-detail-icon">📅</span> Saturday, 6th February 2027</div>
-          <div class="card-detail"><span class="card-detail-icon">🕐</span> 11:00 AM</div>
-          <div class="card-detail"><span class="card-detail-icon">📍</span> Kolkata</div>
-          <div class="card-dress">Formal · <span class="card-theme-dot" style="background:#f0c0d0"></span></div>
+          <div class="card-scene">
+            <svg viewBox="0 0 340 160" preserveAspectRatio="xMidYMid slice">
+              <defs>
+                <linearGradient id="gWedding" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stop-color="#ad1457"/>
+                  <stop offset="55%" stop-color="#f48fb1"/>
+                  <stop offset="100%" stop-color="#fce4ec"/>
+                </linearGradient>
+              </defs>
+              <rect width="340" height="160" fill="url(#gWedding)"/>
+              <path d="M125 82 Q170 20 215 82 Z" fill="#ffd54f" opacity="0.5"/>
+              <rect x="105" y="82" width="130" height="78" fill="#fff0f5" opacity="0.45"/>
+              <path d="M135 160 L135 104 Q170 76 205 104 L205 160 Z" fill="#6e1f2f" opacity="0.35"/>
+              <circle cx="80" cy="65" r="14" fill="#f8bbd0" opacity="0.7"/>
+              <circle cx="260" cy="65" r="14" fill="#f8bbd0" opacity="0.7"/>
+              <circle cx="170" cy="24" r="5" fill="#ffd54f"/>
+            </svg>
+          </div>
+          <div class="card-icon-badge">🕌</div>
+          <div class="card-body">
+            <div class="card-datetime">SAT · 06 FEB · 11:00 AM</div>
+            <div class="card-function-name">Wedding &amp; Pheras</div>
+            <div class="card-venue">Kolkata</div>
+            <div class="card-dress-box">
+              <div class="card-swatch" style="background:linear-gradient(135deg,#f8bbd0,#ec407a)"></div>
+              <div class="card-dress-text">
+                <span class="card-dress-label">Dress Code</span>
+                <span class="card-dress-value">Formal · Pink</span>
+              </div>
+            </div>
+          </div>
         </div>
-        <!-- Card 7: Reception -->
+
+        <!-- Card 6: Reception (Ivory & Champagne Gold Islamic Banquet Dome & Chandeliers) -->
         <div class="carousel-card" data-color="white">
-          <div class="card-emoji">🎊✨🥂</div>
-          <div class="card-function-name">Reception</div>
-          <div class="golden-divider short"></div>
-          <div class="card-detail"><span class="card-detail-icon">📅</span> Sunday, 7th February 2027</div>
-          <div class="card-detail"><span class="card-detail-icon">🕐</span> 11:00 AM</div>
-          <div class="card-detail"><span class="card-detail-icon">📍</span> Kolkata</div>
-          <div class="card-dress">Formal · <span class="card-theme-dot" style="background:#f5f5f0"></span></div>
+          <div class="card-scene">
+            <svg viewBox="0 0 340 160" preserveAspectRatio="xMidYMid slice">
+              <defs>
+                <linearGradient id="gReception" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stop-color="#d4b46a"/>
+                  <stop offset="60%" stop-color="#f5e6c8"/>
+                  <stop offset="100%" stop-color="#ffffff"/>
+                </linearGradient>
+              </defs>
+              <rect width="340" height="160" fill="url(#gReception)"/>
+              <path d="M60 160 L60 75 Q170 15 280 75 L280 160 Z" fill="#ffffff" opacity="0.45"/>
+              <line x1="170" y1="0" x2="170" y2="34" stroke="#8b6914" stroke-width="2"/>
+              <path d="M135 34 Q170 52 205 34" fill="none" stroke="#c9a84c" stroke-width="2.5"/>
+              <circle cx="145" cy="48" r="4" fill="#fffde7"/>
+              <circle cx="170" cy="54" r="5" fill="#fffde7"/>
+              <circle cx="195" cy="48" r="4" fill="#fffde7"/>
+              <circle cx="105" cy="45" r="3" fill="#ffffff" opacity="0.8"/>
+              <circle cx="235" cy="45" r="3" fill="#ffffff" opacity="0.8"/>
+            </svg>
+          </div>
+          <div class="card-icon-badge">✨</div>
+          <div class="card-body">
+            <div class="card-datetime">SUN · 07 FEB · 11:00 AM</div>
+            <div class="card-function-name">Reception</div>
+            <div class="card-venue">Kolkata</div>
+            <div class="card-dress-box">
+              <div class="card-swatch" style="background:linear-gradient(135deg,#ffffff,#efe7d6)"></div>
+              <div class="card-dress-text">
+                <span class="card-dress-label">Dress Code</span>
+                <span class="card-dress-value">Formal · White</span>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -1149,6 +1402,7 @@ button{cursor:pointer;border:none;outline:none;font-family:inherit}
     <div class="corner-ornament bottom-right" style="border-color:var(--gold)"></div>
 
     <div class="reception-content">
+      <img class="islamic-moon-img large reveal" src="photos/islamic-moon.png" alt="Islamic Symbol" style="margin-bottom:10px">
       <div class="reception-emoji reveal">🌹✨🌹</div>
       <h2 class="reception-title reveal reveal-delay-1">Grand Reception</h2>
       <div class="reception-subtitle reveal reveal-delay-1">A Day of Joy &amp; Celebration</div>
@@ -1215,31 +1469,42 @@ button{cursor:pointer;border:none;outline:none;font-family:inherit}
     <div class="corner-ornament bottom-left"></div>
     <div class="corner-ornament bottom-right"></div>
 
-    <div class="closing-symbol reveal">☪</div>
+    <div class="closing-symbol reveal"><img class="islamic-moon-img large" src="photos/islamic-moon.png" alt="Islamic Symbol"></div>
     <h2 class="closing-title reveal reveal-delay-1">
       We Can't Wait to Celebrate With You!
     </h2>
     <div class="golden-divider reveal reveal-delay-2"></div>
 
-    <div class="closing-floral reveal reveal-delay-2">🌸 🌺 🌸</div>
+    <div class="closing-floral reveal reveal-delay-2" style="margin:8px 0">🌸 🌺 🌸</div>
 
-    <div class="closing-families reveal reveal-delay-3">
+    <div class="closing-families reveal reveal-delay-3" style="margin-top:10px">
       <div class="closing-family-name">The Mehedi Family</div>
-      <div style="margin:3px 0;color:var(--gold)">&</div>
+      <div style="margin:2px 0;color:var(--gold)">&</div>
       <div class="closing-family-name">The Halima Family</div>
     </div>
 
-    <div class="golden-divider reveal reveal-delay-3" style="margin-top:25px"></div>
+    <div class="golden-divider reveal reveal-delay-3" style="margin-top:14px"></div>
 
-    <p class="closing-message reveal reveal-delay-4">With love, the Mehedi & Halima families</p>
+    <p class="closing-message reveal reveal-delay-4" style="margin-top:10px">With love, the Mehedi & Halima families</p>
 
-    <div class="reveal reveal-delay-4" style="margin-top:30px;opacity:0.3">
+    <div class="reveal reveal-delay-4" style="margin-top:16px;opacity:0.35">
       <div>🌹 🌹 🌹</div>
-      <div style="font-family:'Montserrat',sans-serif;font-size:0.55rem;letter-spacing:3px;margin-top:10px;color:var(--text-medium)">
+      <div style="font-family:'Montserrat',sans-serif;font-size:0.55rem;letter-spacing:3px;margin-top:6px;color:var(--text-medium)">
         MADE WITH LOVE
       </div>
     </div>
   </section>
+
+  <!-- ═══════════════════════ FOOTER CREDIT ═══════════════════════ -->
+  <div class="footer-credit">
+    <div class="footer-brand">Created by Stova Media</div>
+    <div class="footer-contact">
+      <a href="https://wa.me/919088785701?text=Hi%20Stova%20Media%2C%20I%20would%20like%20to%20create%20a%20digital%20wedding%20invitation%20website." target="_blank" rel="noopener">
+        💬 WhatsApp: +91 9088785701
+      </a>
+    </div>
+    <div class="footer-contact-msg">Want a digital wedding invitation like this for your special day? Tap the number above to chat with us on WhatsApp!</div>
+  </div>
 
 </div>
 
@@ -1405,18 +1670,36 @@ function initCarousel() {
   let current = 0;
   let startX = 0;
   let isDragging = false;
+  let autoSlide = null;
+  let resumeTimer = null;
+
+  function startAutoSlide() {
+    clearInterval(autoSlide);
+    autoSlide = setInterval(() => {
+      goToCard(current >= cards.length - 1 ? 0 : current + 1);
+    }, 2000);
+  }
+
+  function pauseAutoSlide() {
+    clearInterval(autoSlide);
+    clearTimeout(resumeTimer);
+    resumeTimer = setTimeout(startAutoSlide, 4000);
+  }
 
   // Create dots
+  dotsContainer.innerHTML = '';
   cards.forEach((_, i) => {
     const dot = document.createElement('div');
     dot.className = 'carousel-dot' + (i === 0 ? ' active' : '');
-    dot.onclick = () => goToCard(i);
+    dot.onclick = () => {
+      goToCard(i);
+      pauseAutoSlide();
+    };
     dotsContainer.appendChild(dot);
   });
 
   function goToCard(index) {
     current = Math.max(0, Math.min(index, cards.length - 1));
-    const offset = current * (85 + 15); // card width% + margins
     track.style.transform = `translateX(-${current * 100}%)`;
     dotsContainer.querySelectorAll('.carousel-dot').forEach((d, i) => {
       d.classList.toggle('active', i === current);
@@ -1427,6 +1710,7 @@ function initCarousel() {
   track.addEventListener('touchstart', e => {
     startX = e.touches[0].clientX;
     isDragging = true;
+    pauseAutoSlide();
   }, { passive: true });
 
   track.addEventListener('touchend', e => {
@@ -1442,6 +1726,7 @@ function initCarousel() {
   track.addEventListener('mousedown', e => {
     startX = e.clientX;
     isDragging = true;
+    pauseAutoSlide();
   });
   track.addEventListener('mouseup', e => {
     if (!isDragging) return;
@@ -1451,6 +1736,9 @@ function initCarousel() {
       goToCard(current + (diff > 0 ? 1 : -1));
     }
   });
+
+  // Start automatic 2-second sliding
+  startAutoSlide();
 }
 
 // ═══════════════════════ GALLERY ═══════════════════════
